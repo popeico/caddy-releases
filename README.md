@@ -13,8 +13,10 @@ Each release has two Linux x86_64 binaries:
 | `caddy-linux-amd64-musl` | musl-based systems (Alpine, etc.) |
 
 Both are statically linked, so they run without extra libraries. Each
-binary ships with a `.sha256` file and a `build-info.txt` file (Caddy
-version, build date, sha256).
+release ships a `SHA256SUMS` file covering both binaries, plus a
+`build-info.txt` file per binary (Caddy version, build date, sha256).
+The first release (`caddy-2.11.9-20261114`) shipped per-asset
+`.sha256` files instead of `SHA256SUMS`.
 
 ## Install
 
@@ -27,12 +29,17 @@ sudo mv caddy-linux-amd64 /usr/local/bin/caddy
 ## Verify
 
 ```sh
-sha256sum -c caddy-linux-amd64.sha256
+sha256sum -c SHA256SUMS
 caddy version
 ```
 
-The checksum must print `OK`. `caddy version` prints the Caddy
-version this binary was built from.
+Every line must print `OK`. To check one binary only:
+
+```sh
+grep caddy-linux-amd64 SHA256SUMS | sha256sum -c -
+```
+
+`caddy version` prints the Caddy version this binary was built from.
 
 ## Run
 
