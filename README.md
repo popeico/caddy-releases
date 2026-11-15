@@ -52,3 +52,26 @@ caddy adapt --config Caddyfile
 See the [Caddy documentation](https://caddyserver.com/docs/) for
 configuration. Releases are built by GitHub Actions from source;
 the build definitions live in a private repo.
+
+## Install with mise
+
+Releases are signed with [packslip](https://packslip.dev), so
+[mise](https://mise.jdx.dev) installs them with no extra setup:
+
+```sh
+mise use packslip:github.com/popeico/caddy-releases@2.11.9
+```
+
+That writes this line to `mise.toml`:
+
+```toml
+"packslip:github.com/popeico/caddy-releases" = "2.11.9"
+```
+
+The signer fingerprint for this release is
+`ps1_a7pg3ai5hc6n4k4keutpxkmcse` (verify with
+`packslip pin packslip.sigstore.json` on the release bundle).
+
+Both binaries in a release are the same static build; the musl-named
+file is also available as the `musl` variant for hosts that want it
+by name.
