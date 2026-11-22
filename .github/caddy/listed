@@ -1,4 +1,5 @@
 # Release tags mapped by the supplementary packslip release list.
-# One tag per line, oldest first; the newest line sets the list's `latest`.
+# One tag per line, oldest first; the newest STABLE line sets the list's `latest`.
+# Experimental prereleases accumulate here but never become `latest`.
 # The packslip-list workflow appends each new release tag automatically.
 caddy-2.11.9-20261115
