@@ -1,3 +1,5 @@
+EN | [中文](README_CN.md)
+
 # caddy-releases
 
 Personal Caddy builds, built from source in CI. Download and run — no
@@ -75,3 +77,16 @@ The signer fingerprint for this release is
 Both binaries in a release are the same static build; the musl-named
 file is also available as the `musl` variant for hosts that want it
 by name.
+
+## Two channels
+
+Every release is built from one Caddy version, but shipped on one of two channels:
+
+- **Stable** — the version is the Caddy version exactly (`2.11.9`). This is the default: `mise latest` and a plain `mise install` resolve to the newest stable release. One stable entry per Caddy version; a stable release is superseded only by an explicit trim.
+- **Experimental** — the version keeps the build date (`2.11.9-20261122`, and `.1`, `.2` for same-day rebuilds). Experimental releases are GitHub prereleases: hidden from `mise latest`, installable by exact version or with prereleases enabled:
+
+```sh
+mise install packslip:github.com/popeico/caddy-releases@2.11.9-20261122
+```
+
+For reproducibility, pin an exact version in `mise.toml` (or `mise.lock`) rather than tracking `latest`. The Caddy version, build tag, and channel of every release are in its tag, its `build-info*.txt` files, and its release notes.
