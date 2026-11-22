@@ -3,3 +3,4 @@
 # Experimental prereleases accumulate here but never become `latest`.
 # The packslip-list workflow appends each new release tag automatically.
 caddy-2.11.9-20261115
+caddy-2.11.9-20261122
